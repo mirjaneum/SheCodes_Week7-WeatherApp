@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" href="src/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="weather-app">
@@ -14,14 +20,15 @@
           alt="SheCodes Logo"
           width="150px"
         />
-        <form>
+        <form class="search-form">
           <input
+            class="search-form-input"
             type="search"
             placeholder="Enter a city..."
             required
             id="search-field"
           />
-          <input type="submit" value="Search" />
+          <input class="search-form-button" type="submit" value="Search" />
         </form>
       </header>
       <main>
