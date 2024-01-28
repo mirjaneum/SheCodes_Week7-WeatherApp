@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <title>Weather App</title>
     <link rel="stylesheet" href="src/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,21 +35,27 @@
       <main>
         <div class="weather-data-today">
           <span>
-            <h1 class="weather-city">Hamburg</h1>
-            <p class="weather-data-today">
-              Wednesday 17:44, light rain Humidity: <strong>100%</strong>, Wind:
-              <strong>4.12km/h</strong>
+            <h1 class="weather-city" id="city-name">Hamburg</h1>
+            <p class="weather-today-details">
+              Wednesday 17:44, light rain
+              <br />
+              Humidity: <span class="weather-data-today-focus">100%</span>,
+              Wind: <span class="weather-data-today-focus">4.12km/h</span>
             </p>
           </span>
-          <span class="weather-temperature-today">🌤️ 2 °C</span>
+          <span class="weather-temperature-today">
+            <div class="weather-temperature-today-icon">🌤️</div>
+            <div class="weather-temperature-today-value">2</div>
+            <div class="weather-temperature-today-unit">°C</div>
+          </span>
         </div>
-        <div>
-          <span>Thursday ☀️ <br />12°C/15°C</span><br />
-          <span>Friday ☀️ <br />12°C/15°C</span><br />
-          <span>Saturday ☀️ <br />12°C/15°C</span><br />
-          <span>Sunday ☀️ <br />12°C/15°C</span><br />
-          <span>Monday ☀️ <br />12°C/15°C</span><br />
-          <span>Tuesday ☀️ <br />12°C/15°C</span><br />
+        <div class="weather-forecast">
+          <span>Thursday <br />☀️ <br />12°C/15°C</span><br />
+          <span>Friday <br />☀️ <br />12°C/15°C</span><br />
+          <span>Saturday <br />☀️ <br />12°C/15°C</span><br />
+          <span>Sunday <br />☀️ <br />12°C/15°C</span><br />
+          <span>Monday <br />☀️ <br />12°C/15°C</span><br />
+          <span>Tuesday <br />☀️ <br />12°C/15°C</span><br />
         </div>
       </main>
       <footer>
@@ -61,5 +68,6 @@
         <a href="https://mirjaneum-weather.netlify.app/">Netlify</a>
       </footer>
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
