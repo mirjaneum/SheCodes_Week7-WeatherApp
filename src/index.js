@@ -10,14 +10,21 @@ function refreshWeather(response) {
   cityNameElement.innerHTML = response.data.city; //Take h1 and replace it with apiUrl content in HTML (innerHTML).
 
   let humidityTodayElement = document.querySelector("#humidity-today"); //Find humidity of today.
-  let humidityToday = response.data.temperature.humidity; //Filter for current humidity in apiUrl content.
-  console.log(humidityToday);
-  humidityTodayElement.innerHTML = `${Math.round(humidityToday)}%`; //Take humidity of today in HTML and replace it with the rounded value of the api.
+  humidityTodayElement.innerHTML = `${Math.round(
+    response.data.temperature.humidity
+  )}%`; //Filter for humidity and take humidity of today in HTML and replace it with the rounded value of the api.
 
   let windTodayElement = document.querySelector("#wind-today"); //Find wind of today.
-  let windToday = response.data.wind.speed; //Filter for current wind in apiUrl content.
-  console.log(windToday);
-  windTodayElement.innerHTML = `${Math.round(windToday)}km/h`; //Take wind of
+  windTodayElement.innerHTML = `${Math.round(response.data.wind.speed)}km/h`; //Take wind in HTML and replace it with the rounded value of the api.
+
+  let timeElement = document.querySelector("#time"); //Find time of today.
+  let date = new Date(response.data.time * 1000); //get timestamp.
+  timeElement.innerHTML = formatDate(date); //Replace the timeElment with the values of the Function formatDate.
+
+  let conditionElement = document.querySelector("#condition"); //Find condition of today.
+  conditionElement.innerHTML = response.data.condition.description; //Filter for current condition in apiUrl content and replace the original value with it.
+  /*
+   */
 }
 
 function searchCity(city) {
@@ -27,6 +34,30 @@ function searchCity(city) {
   axios.get(apiURL).then(refreshWeather); //Gets data via axios with Variable apiUrl and triggers Function refreshWeather.
 }
 
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  /*
+if (minutes< 10) {
+    minutes = `0${minutes()}`;
+
+}
+if (hours < 10) {
+  hours = `0${hours()}`;
+}
+*/
+  return `${day()} ${hours()}:${minutes()}`;
+}
 function handleSearchSubmit(event) {
   //Fucntion to catch Search Input and replace h1 (City name).
   event.preventDefault(); //Prevent page from relaoding.

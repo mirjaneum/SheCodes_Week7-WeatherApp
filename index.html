@@ -35,17 +35,22 @@
       <main>
         <div class="weather-data-today">
           <span>
-            <h1 class="weather-city" id="city-name">Hamburg</h1>
+            <h1 class="weather-city" id="city-name"></h1>
             <p class="weather-today-details">
-              Wednesday 17:44, light rain
+              <span id="time"></span> <span id="condition"></span>
               <br />
-              Humidity: <span class="weather-data-today-focus">100%</span>,
-              Wind: <span class="weather-data-today-focus">4.12km/h</span>
+              Humidity:
+              <span class="weather-data-today-focus" id="humidity-today"></span
+              >, Wind:
+              <span class="weather-data-today-focus" id="wind-today"></span>
             </p>
           </span>
           <span class="weather-temperature-today">
             <div class="weather-temperature-today-icon">🌤️</div>
-            <div class="weather-temperature-today-value">2</div>
+            <div
+              class="weather-temperature-today-value"
+              id="weather-temperature-today-value"
+            ></div>
             <div class="weather-temperature-today-unit">°C</div>
           </span>
         </div>
