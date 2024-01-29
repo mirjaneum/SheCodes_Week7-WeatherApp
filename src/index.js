@@ -23,8 +23,6 @@ function refreshWeather(response) {
 
   let conditionElement = document.querySelector("#condition"); //Find condition of today.
   conditionElement.innerHTML = response.data.condition.description; //Filter for current condition in apiUrl content and replace the original value with it.
-  /*
-   */
 }
 
 function searchCity(city) {
@@ -47,16 +45,15 @@ function formatDate(date) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  /*
-if (minutes< 10) {
-    minutes = `0${minutes()}`;
 
-}
-if (hours < 10) {
-  hours = `0${hours()}`;
-}
-*/
-  return `${day()} ${hours()}:${minutes()}`;
+  if (minutes < 10) {
+    minutes = `0${minutes()}`;
+  }
+  if (hours < 10) {
+    hours = `0${hours()}`;
+  }
+
+  return `${day} ${hours}:${minutes}, `;
 }
 function handleSearchSubmit(event) {
   //Fucntion to catch Search Input and replace h1 (City name).
@@ -67,4 +64,4 @@ function handleSearchSubmit(event) {
 let searchFormElement = document.querySelector(".search-form"); //Find whole Search Form.
 searchFormElement.addEventListener("submit", handleSearchSubmit); //Take action if someone writes a name into the Search Input and hits Submit; Triggers function handleSearchSubmit.
 
-searchCity("Guttet-Feschel");
+searchCity("Miami");
