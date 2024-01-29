@@ -23,6 +23,15 @@ function refreshWeather(response) {
 
   let conditionElement = document.querySelector("#condition"); //Find condition of today.
   conditionElement.innerHTML = response.data.condition.description; //Filter for current condition in apiUrl content and replace the original value with it.
+
+  let icon = document.querySelector("#icon"); //Find icon of today.
+  icon.innerHTML = `<img
+               
+                src="${response.data.condition.icon_url}"
+                alt="weather icon"
+                class="weather-temperature-today-icon"
+              />`;
+  //Replace icon with the data of the api. The icon is an image, hence the response must be included in the image scr.
 }
 
 function searchCity(city) {
@@ -47,10 +56,10 @@ function formatDate(date) {
   let day = days[date.getDay()];
 
   if (minutes < 10) {
-    minutes = `0${minutes()}`;
+    minutes = `0${minutes}`;
   }
   if (hours < 10) {
-    hours = `0${hours()}`;
+    hours = `0${hours}`;
   }
 
   return `${day} ${hours}:${minutes}, `;
