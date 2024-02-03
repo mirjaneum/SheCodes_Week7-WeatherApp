@@ -25,12 +25,7 @@ function refreshWeather(response) {
   conditionElement.innerHTML = response.data.condition.description; //Filter for current condition in apiUrl content and replace the original value with it.
 
   let icon = document.querySelector("#icon"); //Find icon of today.
-  icon.innerHTML = `<img
-               
-                src="${response.data.condition.icon_url}"
-                alt="weather icon"
-                class="weather-temperature-today-icon"
-              />`;
+  icon.innerHTML = `<img src="${response.data.condition.icon_url}" alt="weather icon" class="weather-temperature-today-icon" />`;
   //Replace icon with the data of the api. The icon is an image, hence the response must be included in the image scr.
 }
 
