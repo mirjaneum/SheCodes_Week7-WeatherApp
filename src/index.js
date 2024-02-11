@@ -31,9 +31,12 @@ function refreshWeather(response) {
   getForecast(response.data.city); //Triggers function displayForecast.
 }
 
-function formatDay(time) {
-  let date = new Date(timestamp * 1000);
+function formatDay(timestamp) {
+  //Makes the day to letters instead of numbers.
+  let date = new Date(timestamp * 1000); //Timestamp is shown in Milliseconds, hence multiplied by 1000. Day in ms?? Not quite sure if that makes sence.
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDate()];
 }
 
 function searchCity(city) {
@@ -53,14 +56,15 @@ function displayForecast(response) {
   let forecastHtml = ""; //Empty variable to be filled in function below.
 
   response.data.daily.forEach(function (day, index) {
-    //Runs the function till the array ends (loop).
+    //Runs the function till the index says stop using an if-Function (loop).
 
-    if (index < 6) {
+    if (index < 5) {
+      //Repeat the function less than 6 times. Don't forget, starts to count at 0.
       forecastHtml = //Takes the first day out of the array above and adds codelines to HTML.
         forecastHtml + //Adds to the first day of the array the following days.
         `
     <div class= "forecast">
-      <div class="weather-forecast-day">Tue</div>
+      <div class="weather-forecast-day">${formatDay(day.time)}</div> 
       <img src="${
         day.condition.icon_url
       }" alt="forecast icon" class="weather-forecast-icon" />
