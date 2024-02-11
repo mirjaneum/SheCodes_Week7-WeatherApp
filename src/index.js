@@ -36,6 +36,29 @@ function searchCity(city) {
   axios.get(apiURL).then(refreshWeather); //Gets data via axios with Variable apiUrl and triggers Function refreshWeather.
 }
 
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"]; //Provides list of days for the forecast.
+  let forecastHtml = ""; //Empty variable to be filled in function below.
+
+  days.forEach(function (day) {
+    //Runs the function till the array ends (loop).
+    forecastHtml = //Takes the first day out of the array above and adds codelines to HTML.
+      forecastHtml + //Adds to the first day of the array the following days.
+      `
+    <div class= "forecast">
+      <div class="weather-forecast-day">${day}</div>
+      <div class="weather-forecast-icon">☀️ </div>
+      <div class "weather forecast temperatures">
+      <div class="weather-forecast-temp-max">12°C</div>
+      <div class="weather-forecast-temp-min">15°C</div>
+      </div>
+    </div>
+    `;
+  });
+  let forecast = document.querySelector("#forecast"); //Finds the place were to put the HTML codelines in HTML (at id=forecast).
+  forecast.innerHTML = forecastHtml; //When loop is over, it triggers addition/replacement of HTML codeline at the place defined for the Query Selector.
+}
+
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
@@ -68,4 +91,5 @@ function handleSearchSubmit(event) {
 let searchFormElement = document.querySelector(".search-form"); //Find whole Search Form.
 searchFormElement.addEventListener("submit", handleSearchSubmit); //Take action if someone writes a name into the Search Input and hits Submit; Triggers function handleSearchSubmit.
 
-searchCity("Miami");
+searchCity("Miami"); //Triggers function searchCity to run the funciton with the city "Miami".
+displayForecast(); //Triggers function displayForecast.
