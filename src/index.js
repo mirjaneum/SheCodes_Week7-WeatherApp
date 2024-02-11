@@ -27,6 +27,13 @@ function refreshWeather(response) {
   let icon = document.querySelector("#icon"); //Find icon of today.
   icon.innerHTML = `<img src="${response.data.condition.icon_url}" alt="weather icon" class="weather-temperature-today-icon" />`;
   //Replace icon with the data of the api. The icon is an image, hence the response must be included in the image scr.
+
+  getForecast(response.data.city); //Triggers function displayForecast.
+}
+
+function formatDay(time) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 }
 
 function searchCity(city) {
@@ -36,24 +43,38 @@ function searchCity(city) {
   axios.get(apiURL).then(refreshWeather); //Gets data via axios with Variable apiUrl and triggers Function refreshWeather.
 }
 
-function displayForecast() {
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"]; //Provides list of days for the forecast.
+function getForecast(city) {
+  let apiKey = "fo1b118b4f76384a070dd0e1b5et80a0"; //Get apiKey from application page.
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`; //Adapt apiUrl to your needs. City from Function handleSearchSubmit and key from Variable apiKey.
+  axios(apiURL).then(displayForecast); //Gets data via axios with Variable apiUrl and triggers Function displayForecast.
+}
+
+function displayForecast(response) {
   let forecastHtml = ""; //Empty variable to be filled in function below.
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day, index) {
     //Runs the function till the array ends (loop).
-    forecastHtml = //Takes the first day out of the array above and adds codelines to HTML.
-      forecastHtml + //Adds to the first day of the array the following days.
-      `
+
+    if (index < 6) {
+      forecastHtml = //Takes the first day out of the array above and adds codelines to HTML.
+        forecastHtml + //Adds to the first day of the array the following days.
+        `
     <div class= "forecast">
-      <div class="weather-forecast-day">${day}</div>
-      <div class="weather-forecast-icon">☀️ </div>
+      <div class="weather-forecast-day">Tue</div>
+      <img src="${
+        day.condition.icon_url
+      }" alt="forecast icon" class="weather-forecast-icon" />
       <div class "weather forecast temperatures">
-      <div class="weather-forecast-temp-max">12°C</div>
-      <div class="weather-forecast-temp-min">15°C</div>
+      <div class="weather-forecast-temp-max">${Math.round(
+        day.temperature.maximum
+      )}°C</div>
+      <div class="weather-forecast-temp-min">${Math.round(
+        day.temperature.minimum
+      )}°C</div>
       </div>
     </div>
     `;
+    }
   });
   let forecast = document.querySelector("#forecast"); //Finds the place were to put the HTML codelines in HTML (at id=forecast).
   forecast.innerHTML = forecastHtml; //When loop is over, it triggers addition/replacement of HTML codeline at the place defined for the Query Selector.
@@ -92,4 +113,3 @@ let searchFormElement = document.querySelector(".search-form"); //Find whole Sea
 searchFormElement.addEventListener("submit", handleSearchSubmit); //Take action if someone writes a name into the Search Input and hits Submit; Triggers function handleSearchSubmit.
 
 searchCity("Miami"); //Triggers function searchCity to run the funciton with the city "Miami".
-displayForecast(); //Triggers function displayForecast.
