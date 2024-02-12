@@ -105,20 +105,24 @@ header {
 /* Start Main part - Weather Forecast */
 .weather-forecast {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   text-align: center;
   padding-top: 25px;
 }
-.weather-forcast-day {
-  font-weight: 900;
+.weather-forecast-day {
+  font-weight: 600;
 }
-.weather-forcast-temp-max {
+.weather-forecast-temp-max {
   color: red;
   font-weight: bold;
 }
-.weather-forcast-temp-min {
-  color: red;
-  opacity: 0.5;
+.weather-forecast-temp-min {
+  color: rgb(255, 0, 0);
+  opacity: 0.8;
+}
+.weather-forecast-icon {
+  width: auto;
+  margin: -15px 0 -15px 0;
 }
 /* End Main part - Weather Forecast */
 
