@@ -36,7 +36,7 @@ function formatDay(timestamp) {
   let date = new Date(timestamp * 1000); //Timestamp is shown in Milliseconds, hence multiplied by 1000. Day in ms?? Not quite sure if that makes sence.
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  return days[date.getDate()];
+  return days[date.getDay()];
 }
 
 function searchCity(city) {
