@@ -113,11 +113,11 @@ header {
   font-weight: 600;
 }
 .weather-forecast-temp-max {
-  color: red;
+  color: #f65282;
   font-weight: bold;
 }
 .weather-forecast-temp-min {
-  color: rgb(255, 0, 0);
+  color: #f65282;
   opacity: 0.8;
 }
 .weather-forecast-icon {
